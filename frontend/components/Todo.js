@@ -1,14 +1,20 @@
 import React from 'react'
 
 export default class Todo extends React.Component {
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
+
+  }
+
+
+  handleClick = () => {
+    this.props.handleToggle(this.props.item.id)
   }
   render() {
     return (
-      <div>
-        {this.props.item.name}
-      </div>
+      <p onClick={this.handleClick}>
+        {this.props.item.name} {this.props.item.completed && <span>DONE</span>}
+      </p>
     )
   }
 }

@@ -29,11 +29,11 @@ export default class App extends React.Component {
         // change todos
         //make copy of todos
         //add todo to the end
-        console.log("hellos")
+        
 
         const newItem = {
           name: task,
-          id: 1528817084358,
+          id: Date.now(),
           completed: false
         }
         this.setState({
@@ -42,18 +42,37 @@ export default class App extends React.Component {
         })
 
 
-
-
-
-      }
+   }
+  
+   
+    handleToggle = (id) => {
       
+        //set state
+        //change todos
+        // find the todo we clicke don 
+        // flip the value of completed for that todo
+        // keep all other todos the same
+        this.setState({
+          ...this.state,
+          items: this.state.items.map(item=>{
+            if (item.id === id){
+              return {...item, completed: !item.completed }
+            } else {
+              return item;
+            }
+          }) 
+          
+        })
+       
+
+    }
  
 
   render() {
     return (
       <div>
         <h1>Todos:</h1>
-        <ToDoList items = {this.state.items} />
+        <ToDoList handleToggle={this.handleToggle} items = {this.state.items} />
         <Form handleAdd={this.handleAdd}/>
         <button onClick={this.addItem}>Hide Completed</button>
       </div>
