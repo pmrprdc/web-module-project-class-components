@@ -73,13 +73,15 @@ export default class App extends React.Component {
        
 
     }
+   
+  
 
     
  
 
   render() {
     return (
-      <div>
+      <div >
         <h1>Todos:</h1>
         <ToDoList handleToggle={this.handleToggle} items = {this.state.items} />
         <Form handleAdd={this.handleAdd}/>
