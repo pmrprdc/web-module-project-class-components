@@ -24,7 +24,7 @@ export default class App extends React.Component {
   }
       }
 
-      handleAdd = ()=> {
+      handleAdd = (task)=> {
         // setState
         // change todos
         //make copy of todos
@@ -32,7 +32,7 @@ export default class App extends React.Component {
         console.log("hellos")
 
         const newItem = {
-          name: 'Bake Cakes',
+          name: task,
           id: 1528817084358,
           completed: false
         }
