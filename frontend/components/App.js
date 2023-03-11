@@ -1,5 +1,6 @@
 import React from 'react'
-
+import ToDoList from "./TodoList"
+import Form from "./Form"
 
 const initialItems = [  {
   name: 'Organize Garage',
@@ -10,7 +11,8 @@ const initialItems = [  {
   name: 'Bake Cookies',
   id: 1528817084358,
   completed: false
-}
+},
+
 ]
 
 
@@ -22,29 +24,38 @@ export default class App extends React.Component {
   }
       }
 
-    addItem =(e, item)=>{
-      e.preventDefault();
-      const newItem = {
-        name: item,
-        id: Date.now(),
-        completed: false
+      handleAdd = ()=> {
+        // setState
+        // change todos
+        //make copy of todos
+        //add todo to the end
+        console.log("hellos")
+
+        const newItem = {
+          name: 'Bake Cakes',
+          id: 1528817084358,
+          completed: false
+        }
+        this.setState({
+          ...this.state,
+          items: [...this.state.items, newItem]
+        })
+
+
+
+
+
       }
-    this.setState({...this.state.items, items: [...this.state.items, newItem]})
-    }
+      
+ 
 
   render() {
     return (
       <div>
         <h1>Todos:</h1>
-        
-        <div>
-        <label>
-        <input type="text" ></input>
-
-        </label>
-        <button onClick={this.addItem}>Submit</button>
-        </div>
-        <button>Hide Completed</button>
+        <ToDoList items = {this.state.items} />
+        <Form handleAdd={this.handleAdd}/>
+        <button onClick={this.addItem}>Hide Completed</button>
       </div>
     )
   }
