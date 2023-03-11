@@ -24,6 +24,13 @@ export default class App extends React.Component {
   }
       }
 
+      handleClear = () => {
+        
+        this.setState({items: this.state.items.filter(item=>{
+              return !item.completed;
+        })})
+      }
+
       handleAdd = (task)=> {
         // setState
         // change todos
@@ -66,6 +73,8 @@ export default class App extends React.Component {
        
 
     }
+
+    
  
 
   render() {
@@ -74,7 +83,7 @@ export default class App extends React.Component {
         <h1>Todos:</h1>
         <ToDoList handleToggle={this.handleToggle} items = {this.state.items} />
         <Form handleAdd={this.handleAdd}/>
-        <button onClick={this.addItem}>Hide Completed</button>
+        <button onClick={this.handleClear}>Hide Completed</button>
       </div>
     )
   }
